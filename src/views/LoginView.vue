@@ -18,6 +18,13 @@ import account from "../assets/account.svg";
 </template>
 
 <style scoped>
+section {
+	padding-block: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 section * {
 	margin: auto;
 	display: block;
@@ -28,5 +35,10 @@ header img {
 	height: auto;
 	border: 2px solid black;
 	border-radius: 50%;
+}
+
+input {
+	width: 100%;
+	height: 3em;
 }
 </style>

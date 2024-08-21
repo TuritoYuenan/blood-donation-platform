@@ -5,10 +5,10 @@
 	<main>
 		<RouterView />
 	</main>
+	<footer>
+		<p>&COPY; 2024 HttP Team</p>
+	</footer>
 </template>
 
 <style scoped>
-main {
-	padding: 1rem;
-}
 </style>
