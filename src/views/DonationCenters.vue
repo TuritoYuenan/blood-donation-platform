@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { DonationCenterSchema } from '../models/database';
 import Supabase from '../utils/supabase';
 import DonationCenter from '../components/DonationCenter.vue'
 
-const centers = ref<DonationCenterSchema[]>([]);
+const centers = ref();
 
 onMounted(async () => {
 	const { data } = await Supabase().from('donation_centers').select('*').limit(10);
