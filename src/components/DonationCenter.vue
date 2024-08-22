@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import DonationCenter from '../models/DonationCenter';
+import { DonationCenterSchema } from '../models/database';
 
-const center = defineProps<DonationCenter>();
+const center: DonationCenterSchema = defineProps<DonationCenterSchema>();
 </script>
 
 <template>
 	<section>
-		<img :src="center.image" alt="image of location">
+		<img :src="center.picture ?? ''" alt="image of location">
 		<h2>{{ center.name }}</h2>
-		<p>2 km</p>
+		<p>{{ center.address }}</p>
+		<p>{{ center.is_hospital ? 'Hospital' : 'Donation Location' }}</p>
 	</section>
 </template>
 
