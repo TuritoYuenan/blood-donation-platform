@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const today: number = 30;
+const today: number = 30
 </script>
 
 <template>

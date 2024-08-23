@@ -256,4 +256,4 @@ export type Enums<
     : never
 
 // Export shorthand for tables because conditional types doesn't work in Vue
-export type DonationCenterSchema = Database['public']['Tables']['donation_centers']['Row'];
+export type DonationCenterSchema = Database['public']['Tables']['donation_centers']['Row']

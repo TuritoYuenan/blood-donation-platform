@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import account from "../assets/account.svg";
+import account from "../assets/account.svg"
 </script>
 
 <template>
