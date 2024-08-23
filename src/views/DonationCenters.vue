@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import Supabase from '../utils/supabase';
+import { onMounted, ref } from 'vue'
+import { QueryData } from '@supabase/supabase-js';
+import supabase from '../utils/supabase'
 import DonationCenter from '../components/DonationCenter.vue'
 
-const centers = ref();
+const query = supabase().from('donation_centers').select('*').limit(10);
+const centers = ref<QueryData<typeof query>>()
 
 onMounted(async () => {
-	const { data } = await Supabase().from('donation_centers').select('*').limit(10);
-	centers.value = data!;
+	const { data } = await query
+	centers.value = data!
 })
 </script>
 
@@ -16,9 +18,8 @@ onMounted(async () => {
 		<h1>Nearby Donation Centers</h1>
 	</header>
 	<article>
-		<DonationCenter v-for="{ name, address, id, is_hospital, open_time, picture } in centers" v-bind:name="name"
-			v-bind:address="address" v-bind:id="id" v-bind:is_hospital="is_hospital" v-bind:open_time="open_time"
-			v-bind:picture="picture" />
+		<DonationCenter v-for="{ name, address, id, is_hospital, open_time, picture } in centers" v-bind:name
+			v-bind:address v-bind:id v-bind:is_hospital v-bind:open_time v-bind:picture />
 	</article>
 </template>
 
