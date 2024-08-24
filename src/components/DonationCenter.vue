@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { PropType } from 'vue';
 import { DonationCenterSchema } from '../models/database'
 
-const center: DonationCenterSchema = defineProps<DonationCenterSchema>()
+const props = defineProps({
+	center: { type: Object as PropType<DonationCenterSchema>, required: true }
+})
+
+const center = props.center!
 </script>
 
 <template>

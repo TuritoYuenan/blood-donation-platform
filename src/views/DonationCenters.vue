@@ -18,8 +18,7 @@ onMounted(async () => {
 		<h1>Nearby Donation Centers</h1>
 	</header>
 	<article>
-		<DonationCenter v-for="{ name, address, id, is_hospital, open_time, picture } in centers" v-bind:name
-			v-bind:address v-bind:id v-bind:is_hospital v-bind:open_time v-bind:picture />
+		<DonationCenter v-for="center in centers" :center />
 	</article>
 </template>
 
