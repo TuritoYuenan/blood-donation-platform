@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { QueryData } from '@supabase/supabase-js';
-import supabase from '../utils/supabase'
+import { DonationCenterSchema } from '../models/database';
+import supabase from '../utils/supabase';
 import DonationCenter from '../components/DonationCenter.vue'
 
-const query = supabase().from('donation_centers').select('*').limit(10);
-const centers = ref<QueryData<typeof query>>()
+const centers = ref<DonationCenterSchema[]>()
 
 onMounted(async () => {
-	const { data } = await query
+	const { data } = await supabase().functions.invoke('list-donation-centers')
 	centers.value = data!
 })
 </script>
