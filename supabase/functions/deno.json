@@ -1,0 +1,13 @@
+{
+	"fmt": {
+		"indentWidth": 4,
+		"semiColons": false,
+		"singleQuote": true,
+		"useTabs": true
+	},
+	"lint": {
+		"rules": {
+			"tags": ["recommended"]
+		}
+	}
+}

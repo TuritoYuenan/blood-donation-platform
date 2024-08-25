@@ -1,12 +1,12 @@
-import supabase from '../_shared/supabase.ts';
-import cors from '../_shared/cors.ts';
+import cors from '../_shared/cors.ts'
+import supabase from '../_shared/supabase.ts'
 
 Deno.serve(async (req) => {
-	try {
-		const { data, error } = await supabase(req.headers.get('Authorization')!)
-			.from('donation_centers')
-			.select('*')
+	const { data, error } = await supabase(req.headers.get('Authorization')!)
+		.from('donation_centers')
+		.select('*')
 
+	try {
 		if (error) throw error
 
 		return new Response(
@@ -16,7 +16,7 @@ Deno.serve(async (req) => {
 	} catch (error) {
 		return new Response(
 			String(error?.message ?? error),
-			{ status: 500 }
+			{ status: 500, headers: { ...cors } }
 		)
 	}
 })
