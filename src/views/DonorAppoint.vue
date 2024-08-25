@@ -1,27 +1,31 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { DonationCenterSchema } from '../models/database'
 import supabase from '../utils/supabase'
+import { useRoute } from 'vue-router'
 
-async function getDonationCenter(id: string) {
-	const { data } = await supabase().from('donation_centers').select('*').eq('id', id).limit(1).single()
-	return data
-}
+const id = useRoute().query.id
+const center = ref<DonationCenterSchema>()
 
-const id = useRoute().params.id as string
-const center = getDonationCenter(id)
-
-onMounted(async () => await center)
+onMounted(async () => {
+	const { data } = await supabase().functions.invoke<DonationCenterSchema>(
+		'donation-center', { method: 'GET', body: { id: id } }
+	)
+	center.value = data!
+})
 </script>
 
 <template>
 	<header>
 		<h1>Appoint for blood donation</h1>
+		<p>Center: {{ center?.name }}</p>
 	</header>
 
 	<form action="" method="post">
+		<input type="text" name="center_id" id="center_id" v-bind:value="id" hidden>
 		<p>
-			<input type="text" name="center_id" id="center_id" v-bind:value="id" hidden>
+			<label for="full_name">Full name</label>
+			<input type="text" name="full_name" id="full_name">
 		</p>
 	</form>
 </template>

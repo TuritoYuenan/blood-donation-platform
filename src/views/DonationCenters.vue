@@ -7,7 +7,9 @@ import DonationCenter from '../components/DonationCenter.vue'
 const centers = ref<DonationCenterSchema[]>()
 
 onMounted(async () => {
-	const { data } = await supabase().functions.invoke<DonationCenterSchema[]>('list-donation-centers')
+	const { data } = await supabase().functions.invoke<DonationCenterSchema[]>(
+		'donation-centers', { method: 'GET' }
+	)
 	centers.value = data!
 })
 </script>

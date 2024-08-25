@@ -5,7 +5,7 @@ defineProps<{ center: DonationCenterSchema }>()
 </script>
 
 <template>
-	<RouterLink :to="'/donor/appoint/' + center.id">
+	<RouterLink :to="{ path: '/donor/appoint', query: { id: center.id } }">
 		<img :src="center.picture ?? 'https://placehold.co/600x400'" alt="image of location">
 		<div>
 			<h2>{{ center.name }}</h2>
