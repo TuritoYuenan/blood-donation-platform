@@ -1,20 +1,40 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import supabase from '../utils/supabase'
 import account from "../assets/account.svg"
+
+const loading = ref(false)
+const email = ref('')
+
+async function handleLogin() {
+	loading.value = true
+	const { error } = await supabase().auth.signInWithOtp({
+		email: email.value,
+		options: {
+			shouldCreateUser: false,
+		}
+	})
+	try {
+		if (error) throw error
+		alert('Check your email for the login link!')
+	} catch (error) {
+		if (error instanceof Error) {
+			alert(error.message)
+		}
+	} finally {
+		loading.value = false
+	}
+}
 </script>
 
 <template>
-	<section>
+	<form @submit.prevent="handleLogin">
 		<header><img v-bind:src="account" alt="Profile picture"></header>
 
-		<input type="text" name="username" id="username" placeholder="username">
-		<input type="password" name="password" id="password" placeholder="password">
+		<input required type="email" placeholder="email" v-model="email">
 
-		<p>
-			<RouterLink to="/">Forget password?</RouterLink>
-		</p>
-
-		<button @click="$router.push('/dashboard')">Sign in</button>
-	</section>
+		<button type="submit" :value="loading ? 'Loading' : 'Send magic link'" :disabled="loading" />
+	</form>
 </template>
 
 <style scoped>
