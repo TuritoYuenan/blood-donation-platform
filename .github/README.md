@@ -61,6 +61,7 @@ npm run preview
 
 ## Who is involved? / Credits
 
+- Mentor: **Mr. Minh Nguyen**, Lecturer @ Swinburne University, HCMC, Vietnam
 - Technical Leader: **Nguyen Ta Minh Triet**, Student @ Swinburne University, HCMC, Vietnam
 - Frontend: **Nguyen Ngoc Anh**, Student @ Swinburne University, HCMC, Vietnam
 - Backend: **Nguyen Quoc Bao**, Student @ Swinburne University, HCMC, Vietnam
