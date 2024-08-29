@@ -7,6 +7,31 @@ export type Json =
 	| Json[]
 
 export type Database = {
+	graphql_public: {
+		Tables: {
+			[_ in never]: never
+		}
+		Views: {
+			[_ in never]: never
+		}
+		Functions: {
+			graphql: {
+				Args: {
+					operationName?: string
+					query?: string
+					variables?: Json
+					extensions?: Json
+				}
+				Returns: Json
+			}
+		}
+		Enums: {
+			[_ in never]: never
+		}
+		CompositeTypes: {
+			[_ in never]: never
+		}
+	}
 	public: {
 		Tables: {
 			donation_centers: {
@@ -76,40 +101,24 @@ export type Database = {
 				Row: {
 					amount: number
 					blood_type: Database['public']['Enums']['blood_type']
-					center_id: string
-					donated: string
-					donor_id: string
-					id: number
+					query_id: string
 				}
 				Insert: {
-					amount: number
+					amount?: number
 					blood_type: Database['public']['Enums']['blood_type']
-					center_id: string
-					donated?: string
-					donor_id: string
-					id?: number
+					query_id?: string
 				}
 				Update: {
 					amount?: number
 					blood_type?: Database['public']['Enums']['blood_type']
-					center_id?: string
-					donated?: string
-					donor_id?: string
-					id?: number
+					query_id?: string
 				}
 				Relationships: [
 					{
-						foreignKeyName: 'donation_units_center_id_fkey'
-						columns: ['center_id']
-						isOneToOne: false
-						referencedRelation: 'donation_centers'
-						referencedColumns: ['id']
-					},
-					{
-						foreignKeyName: 'donation_units_donor_id_fkey'
-						columns: ['donor_id']
-						isOneToOne: false
-						referencedRelation: 'donors'
+						foreignKeyName: 'donation_units_query_id_fkey'
+						columns: ['query_id']
+						isOneToOne: true
+						referencedRelation: 'donation_queries'
 						referencedColumns: ['id']
 					},
 				]
