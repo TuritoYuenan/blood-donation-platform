@@ -24,7 +24,11 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-article>* {
-	margin-top: 1rem;
+article {
+	max-width: 800px;
+	margin: auto;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(2, 1fr);
 }
 </style>
