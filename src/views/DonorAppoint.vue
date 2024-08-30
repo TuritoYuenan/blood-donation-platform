@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
+
+async function appoint() {
+	return 0
+}
 </script>
 
 <template>
@@ -6,7 +11,7 @@
 		<h1>Appoint for blood donation</h1>
 	</header>
 
-	<form action="" method="post">
+	<form @submit.prevent="appoint">
 		<label for="full_name">Full name</label>
 		<input type="text" name="full_name" id="full_name" required>
 		<label for="email">Email address</label>
@@ -15,7 +20,11 @@
 		<input type="tel" name="phone_nmbr" id="phone">
 		<label for="citizen">Citizen ID</label>
 		<input type="text" name="citizen_id" id="citizen">
-		<label for="location">Donation Center</label>
+		<label for="location">
+			<RouterLink to="/donor/centers" target="_blank" rel="noreferrer noopener">
+				Donation Center
+			</RouterLink>
+		</label>
 		<select name="gender" id="location">
 		</select>
 		<label for="gender">Gender</label>

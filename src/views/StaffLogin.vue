@@ -33,19 +33,23 @@ async function handleLogin() {
 
 		<input required type="email" placeholder="email" v-model="email">
 
-		<button type="submit" :value="loading ? 'Loading' : 'Send magic link'" :disabled="loading" />
+		<button type="submit" :value="loading ? 'Loading' : 'Send magic link'" :disabled="loading">
+			Send magic link
+		</button>
 	</form>
 </template>
 
 <style scoped>
-section {
+form {
+	max-width: 600px;
+	margin: auto;
 	padding-block: 2rem;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 }
 
-section * {
+form * {
 	margin: auto;
 	display: block;
 }

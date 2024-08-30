@@ -1,13 +1,20 @@
 <script setup lang="ts">
-const today: number = 30
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-	<h1>Dashboard</h1>
-
-	<p>Incoming today:</p>
-	<p>{{ today }}</p>
-
-	<p><a href="">Lấy máu</a></p>
-	<p><a href="">Xét nghiệm</a></p>
+	<header>
+		<h1>Dashboard</h1>
+	</header>
+	<section>
+		<h2>Under Conception</h2>
+		<p><RouterLink to="/staff/login">Login</RouterLink></p>
+	</section>
 </template>
+
+<style scoped>
+section {
+	max-width: 800px;
+	margin: auto;
+}
+</style>
