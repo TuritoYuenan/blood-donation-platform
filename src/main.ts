@@ -1,12 +1,12 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import './style.css'
 import App from './App.vue'
 
 /** Router for web app */
 const router = createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),
+	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes: [
 		// Homepage
 		{ path: '/', component: () => import('./views/Homepage.vue') },
