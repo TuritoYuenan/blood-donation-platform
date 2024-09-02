@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { centers } from "../utils/store"
+import { onMounted } from "vue";
 import DonationCenter from "../components/DonationCenter.vue"
+import store from "../utils/store";
+
+onMounted(async () => {
+	if (store.donationCenters.length === 0) store.loadDonationCenters()
+})
 </script>
 
 <template>
@@ -8,7 +13,7 @@ import DonationCenter from "../components/DonationCenter.vue"
 		<h1>Nearby Donation Centers</h1>
 	</header>
 	<article>
-		<DonationCenter v-for="center in centers" :center />
+		<DonationCenter v-for="center in store.donationCenters" :key="center.id" :center />
 	</article>
 </template>
 

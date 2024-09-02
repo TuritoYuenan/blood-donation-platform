@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { RouterLink } from "vue-router";
-import { centers } from "../utils/store";
+import store from "../utils/store";
 
 const fullName = ref<string>("")
 const emailAddr = ref<string>("")
@@ -16,6 +16,10 @@ const height = ref<number>(0)
 async function appoint() {
 	alert("Submitted")
 }
+
+onMounted(async () => {
+	if (store.donationCenters.length === 0) store.loadDonationCenters()
+})
 </script>
 
 <template>
@@ -43,7 +47,7 @@ async function appoint() {
 		</label>
 		<select id="location" v-model="location" required>
 			<option disabled value="">Please select one</option>
-			<option v-for="center in centers" :value="center.id">{{ center.name }}</option>
+			<option v-for="center in store.donationCenters" :value="center.id">{{ center.name }}</option>
 		</select>
 
 		<label for="date">Appointment Date</label>

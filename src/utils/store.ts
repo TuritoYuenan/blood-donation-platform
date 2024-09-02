@@ -2,12 +2,22 @@ import { reactive } from "vue";
 import { DonationCenterSchema } from "../models/database";
 import supabase from "./supabase";
 
-const centers = reactive<DonationCenterSchema[]>([])
+export default reactive({
+	isWorking: false,
 
-if (centers.length == 0) {
-	const { data } = await supabase().functions
-		.invoke<DonationCenterSchema[]>("donation-centers", { method: "GET" })
-	data?.forEach((center) => centers.push(center))
-}
+	donationCenters: new Array<DonationCenterSchema>(),
+	async loadDonationCenters() {
+		this.isWorking = true
 
-export { centers }
+		const { data, error } = await supabase().functions
+			.invoke<DonationCenterSchema[]>("donation-centers", { method: "GET" })
+
+		if (error) {
+			if (error instanceof Error) alert('Error' + error.message)
+			return
+		}
+
+		this.donationCenters.splice(0, this.donationCenters.length, ...data!)
+		this.isWorking = false
+	}
+})
