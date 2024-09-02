@@ -1,8 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import { centers } from '../utils/store';
+
+const fullName = ref<string>('')
+const emailAddr = ref<string>('')
+const phoneNmbr = ref<string>('')
+const citizenId = ref<string>('')
+const location = ref<string>('')
+const gender = ref<string>('')
+const date = ref<string>('')
+const weight = ref<number>(0)
+const height = ref<number>(0)
 
 async function appoint() {
-	return 0
+	alert('Submitted')
 }
 </script>
 
@@ -13,32 +25,46 @@ async function appoint() {
 
 	<form @submit.prevent="appoint">
 		<label for="full_name">Full name</label>
-		<input type="text" name="full_name" id="full_name" required>
+		<input id="full_name" type="text" v-model.trim="fullName" required>
+
 		<label for="email">Email address</label>
-		<input type="email" name="email_addr" id="email" required>
+		<input id="email" type="email" v-model.trim="emailAddr" required>
+
 		<label for="phone">Phone number</label>
-		<input type="tel" name="phone_nmbr" id="phone">
+		<input id="phone" type="tel" v-model.trim="phoneNmbr">
+
 		<label for="citizen">Citizen ID</label>
-		<input type="text" name="citizen_id" id="citizen">
+		<input id="citizen" type="text" v-model.trim="citizenId">
+
 		<label for="location">
-			<RouterLink to="/donor/centers" target="_blank" rel="noreferrer noopener">
+			<RouterLink to="/donation-centers" target="_blank" rel="noreferrer noopener">
 				Donation Center
 			</RouterLink>
 		</label>
-		<select name="gender" id="location">
+		<select id="location" v-model="location" required>
+			<option disabled value="">Please select one</option>
+			<option v-for="center in centers" :value="center.id">{{ center.name }}</option>
 		</select>
+
+		<label for="date">Appointment Date</label>
+		<select id="date" v-model="date" required>
+			<option disabled value="">Please select one</option>
+		</select>
+
 		<label for="gender">Gender</label>
-		<select name="gender" id="gender">
+		<select id="gender" v-model="gender">
+			<option disabled value="">Please select one</option>
 			<option value="male">Male</option>
 			<option value="female">Female</option>
 			<option value="other">Other</option>
 		</select>
-		<label for="date">Appointment Date</label>
-		<input type="date" name="date" id="date">
+
 		<label for="height">Height</label>
-		<input type="number" name="height" id="height">
+		<input id="height" type="number" v-model="height">
+
 		<label for="weight">Weight</label>
-		<input type="number" name="weight" id="weight">
+		<input id="weight" type="number" v-model="weight">
+
 		<div></div>
 		<div><button type="submit">Send</button></div>
 	</form>
@@ -58,5 +84,9 @@ form {
 form label {
 	margin-inline: 1rem;
 	text-align: center;
+}
+
+input, select {
+	border: 1px solid black;
 }
 </style>

@@ -12,7 +12,7 @@ const router = createRouter({
 		{ path: '/', component: () => import('./views/Homepage.vue') },
 
 		// Pages for Blood donors
-		{ path: '/donor/centers', component: () => import('./views/DonationCenters.vue') },
+		{ path: '/donation-centers', component: () => import('./views/DonationCenters.vue') },
 		{ path: '/donor/appoint', component: () => import('./views/DonorAppoint.vue') },
 		{ path: '/donor/result', component: () => import('./views/DonorAppointResult.vue') },
 		{ path: '/donor/info', component: () => import('./views/DonorAppointment.vue') },

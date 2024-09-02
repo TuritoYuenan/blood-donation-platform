@@ -1,17 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { DonationCenterSchema } from '../models/database'
-import supabase from '../utils/supabase'
+import { centers } from '../utils/store'
 import DonationCenter from '../components/DonationCenter.vue'
-
-const centers = ref<DonationCenterSchema[]>()
-
-onMounted(async () => {
-	const { data } = await supabase().functions.invoke<DonationCenterSchema[]>(
-		'donation-centers', { method: 'GET' }
-	)
-	centers.value = data!
-})
 </script>
 
 <template>
