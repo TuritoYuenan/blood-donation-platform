@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DonationCenterSchema } from '../models/database'
+import { DonationCenterSchema } from "../models/database"
 
 defineProps<{ center: DonationCenterSchema }>()
 </script>
@@ -10,8 +10,8 @@ defineProps<{ center: DonationCenterSchema }>()
 		<div>
 			<h2>{{ center.name }}</h2>
 			<small>
-				{{ center.is_hospital ? 'Hospital' : 'Donation Location' }}
-				&bull; {{ Math.random() > 0.5 ? 'Open' : 'Closed' }}
+				{{ center.is_hospital ? "Hospital" : "Donation Location" }}
+				&bull; {{ Math.random() > 0.5 ? "Open" : "Closed" }}
 			</small>
 			<p>{{ center.address }}</p>
 		</div>

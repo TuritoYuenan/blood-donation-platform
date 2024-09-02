@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import NavigationBar from './components/NavigationBar.vue';
-const github = 'https://github.com/TuritoYuenan/blood-management-system'
+import NavigationBar from "./components/NavigationBar.vue";
+const github = "https://github.com/TuritoYuenan/blood-management-system"
 </script>
 
 <template>

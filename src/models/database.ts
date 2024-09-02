@@ -82,79 +82,79 @@ export type Database = {
 				}
 				Relationships: [
 					{
-						foreignKeyName: 'donation_queries_center_id_fkey'
-						columns: ['center_id']
+						foreignKeyName: "donation_queries_center_id_fkey"
+						columns: ["center_id"]
 						isOneToOne: false
-						referencedRelation: 'donation_centers'
-						referencedColumns: ['id']
+						referencedRelation: "donation_centers"
+						referencedColumns: ["id"]
 					},
 					{
-						foreignKeyName: 'donation_queries_donor_id_fkey'
-						columns: ['donor_id']
+						foreignKeyName: "donation_queries_donor_id_fkey"
+						columns: ["donor_id"]
 						isOneToOne: false
-						referencedRelation: 'donors'
-						referencedColumns: ['id']
+						referencedRelation: "donors"
+						referencedColumns: ["id"]
 					},
 				]
 			}
 			donation_units: {
 				Row: {
 					amount: number
-					blood_type: Database['public']['Enums']['blood_type']
+					blood_type: Database["public"]["Enums"]["blood_type"]
 					query_id: string
 				}
 				Insert: {
 					amount?: number
-					blood_type: Database['public']['Enums']['blood_type']
+					blood_type: Database["public"]["Enums"]["blood_type"]
 					query_id?: string
 				}
 				Update: {
 					amount?: number
-					blood_type?: Database['public']['Enums']['blood_type']
+					blood_type?: Database["public"]["Enums"]["blood_type"]
 					query_id?: string
 				}
 				Relationships: [
 					{
-						foreignKeyName: 'donation_units_query_id_fkey'
-						columns: ['query_id']
+						foreignKeyName: "donation_units_query_id_fkey"
+						columns: ["query_id"]
 						isOneToOne: true
-						referencedRelation: 'donation_queries'
-						referencedColumns: ['id']
+						referencedRelation: "donation_queries"
+						referencedColumns: ["id"]
 					},
 				]
 			}
 			donors: {
 				Row: {
-					blood_type: Database['public']['Enums']['blood_type']
+					blood_type: Database["public"]["Enums"]["blood_type"]
 					citizen_id: string
 					created: string
 					email_address: string
 					full_name: string
-					gender: Database['public']['Enums']['gender']
+					gender: Database["public"]["Enums"]["gender"]
 					height: number | null
 					id: string
 					phone_number: string | null
 					weight: number | null
 				}
 				Insert: {
-					blood_type: Database['public']['Enums']['blood_type']
+					blood_type: Database["public"]["Enums"]["blood_type"]
 					citizen_id: string
 					created?: string
 					email_address: string
 					full_name: string
-					gender: Database['public']['Enums']['gender']
+					gender: Database["public"]["Enums"]["gender"]
 					height?: number | null
 					id?: string
 					phone_number?: string | null
 					weight?: number | null
 				}
 				Update: {
-					blood_type?: Database['public']['Enums']['blood_type']
+					blood_type?: Database["public"]["Enums"]["blood_type"]
 					citizen_id?: string
 					created?: string
 					email_address?: string
 					full_name?: string
-					gender?: Database['public']['Enums']['gender']
+					gender?: Database["public"]["Enums"]["gender"]
 					height?: number | null
 					id?: string
 					phone_number?: string | null
@@ -186,11 +186,11 @@ export type Database = {
 				}
 				Relationships: [
 					{
-						foreignKeyName: 'working_hours_center_id_fkey'
-						columns: ['center_id']
+						foreignKeyName: "working_hours_center_id_fkey"
+						columns: ["center_id"]
 						isOneToOne: false
-						referencedRelation: 'donation_centers'
-						referencedColumns: ['id']
+						referencedRelation: "donation_centers"
+						referencedColumns: ["id"]
 					},
 				]
 			}
@@ -202,8 +202,8 @@ export type Database = {
 			[_ in never]: never
 		}
 		Enums: {
-			blood_type: 'O+' | 'O-' | 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-'
-			gender: 'male' | 'female' | 'attack_helicopter' | 'others'
+			blood_type: "O+" | "O-" | "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-"
+			gender: "male" | "female" | "attack_helicopter" | "others"
 		}
 		CompositeTypes: {
 			[_ in never]: never
@@ -211,31 +211,31 @@ export type Database = {
 	}
 }
 
-type PublicSchema = Database[Extract<keyof Database, 'public'>]
+type PublicSchema = Database[Extract<keyof Database, "public">]
 
 export type Tables<
 	PublicTableNameOrOptions extends
-		| keyof (PublicSchema['Tables'] & PublicSchema['Views'])
+		| keyof (PublicSchema["Tables"] & PublicSchema["Views"])
 		| { schema: keyof Database },
 	TableName extends PublicTableNameOrOptions extends
 		{ schema: keyof Database } ? keyof (
-			& Database[PublicTableNameOrOptions['schema']]['Tables']
-			& Database[PublicTableNameOrOptions['schema']]['Views']
+			& Database[PublicTableNameOrOptions["schema"]]["Tables"]
+			& Database[PublicTableNameOrOptions["schema"]]["Views"]
 		)
 		: never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database } ? (
-		& Database[PublicTableNameOrOptions['schema']]['Tables']
-		& Database[PublicTableNameOrOptions['schema']]['Views']
+		& Database[PublicTableNameOrOptions["schema"]]["Tables"]
+		& Database[PublicTableNameOrOptions["schema"]]["Views"]
 	)[TableName] extends {
 		Row: infer R
 	} ? R
 	: never
 	: PublicTableNameOrOptions extends keyof (
-		& PublicSchema['Tables']
-		& PublicSchema['Views']
+		& PublicSchema["Tables"]
+		& PublicSchema["Views"]
 	) ? (
-			& PublicSchema['Tables']
-			& PublicSchema['Views']
+			& PublicSchema["Tables"]
+			& PublicSchema["Views"]
 		)[PublicTableNameOrOptions] extends {
 			Row: infer R
 		} ? R
@@ -244,20 +244,20 @@ export type Tables<
 
 export type TablesInsert<
 	PublicTableNameOrOptions extends
-		| keyof PublicSchema['Tables']
+		| keyof PublicSchema["Tables"]
 		| { schema: keyof Database },
 	TableName extends PublicTableNameOrOptions extends
 		{ schema: keyof Database }
-		? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
+		? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
 		: never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-	? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends
+	? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends
 		{
 			Insert: infer I
 		} ? I
 	: never
-	: PublicTableNameOrOptions extends keyof PublicSchema['Tables']
-		? PublicSchema['Tables'][PublicTableNameOrOptions] extends {
+	: PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
+		? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
 			Insert: infer I
 		} ? I
 		: never
@@ -265,20 +265,20 @@ export type TablesInsert<
 
 export type TablesUpdate<
 	PublicTableNameOrOptions extends
-		| keyof PublicSchema['Tables']
+		| keyof PublicSchema["Tables"]
 		| { schema: keyof Database },
 	TableName extends PublicTableNameOrOptions extends
 		{ schema: keyof Database }
-		? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
+		? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
 		: never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-	? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends
+	? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends
 		{
 			Update: infer U
 		} ? U
 	: never
-	: PublicTableNameOrOptions extends keyof PublicSchema['Tables']
-		? PublicSchema['Tables'][PublicTableNameOrOptions] extends {
+	: PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
+		? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
 			Update: infer U
 		} ? U
 		: never
@@ -286,17 +286,17 @@ export type TablesUpdate<
 
 export type Enums<
 	PublicEnumNameOrOptions extends
-		| keyof PublicSchema['Enums']
+		| keyof PublicSchema["Enums"]
 		| { schema: keyof Database },
 	EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
-		? keyof Database[PublicEnumNameOrOptions['schema']]['Enums']
+		? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
 		: never = never,
 > = PublicEnumNameOrOptions extends { schema: keyof Database }
-	? Database[PublicEnumNameOrOptions['schema']]['Enums'][EnumName]
-	: PublicEnumNameOrOptions extends keyof PublicSchema['Enums']
-		? PublicSchema['Enums'][PublicEnumNameOrOptions]
+	? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
+	: PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
+		? PublicSchema["Enums"][PublicEnumNameOrOptions]
 	: never
 
-// Export shorthand for tables because conditional types doesn't work in Vue
+// Export shorthand for tables because conditional types doesn"t work in Vue
 export type DonationCenterSchema =
-	PublicSchema['Tables']['donation_centers']['Row']
+	PublicSchema["Tables"]["donation_centers"]["Row"]

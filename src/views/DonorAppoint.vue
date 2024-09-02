@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
-import { centers } from '../utils/store';
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
+import { centers } from "../utils/store";
 
-const fullName = ref<string>('')
-const emailAddr = ref<string>('')
-const phoneNmbr = ref<string>('')
-const citizenId = ref<string>('')
-const location = ref<string>('')
-const gender = ref<string>('')
-const date = ref<string>('')
+const fullName = ref<string>("")
+const emailAddr = ref<string>("")
+const phoneNmbr = ref<string>("")
+const citizenId = ref<string>("")
+const location = ref<string>("")
+const gender = ref<string>("")
+const date = ref<string>("")
 const weight = ref<number>(0)
 const height = ref<number>(0)
 
 async function appoint() {
-	alert('Submitted')
+	alert("Submitted")
 }
 </script>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { centers } from '../utils/store'
-import DonationCenter from '../components/DonationCenter.vue'
+import { centers } from "../utils/store"
+import DonationCenter from "../components/DonationCenter.vue"
 </script>
 
 <template>
