@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import NavigationBar from "./components/NavigationBar.vue";
+import Loading from "./components/Loading.vue";
 import store from "./utils/store";
+
 const github = "https://github.com/TuritoYuenan/blood-management-system"
 </script>
 
 <template>
 	<NavigationBar />
 	<main>
-		<RouterView :key="$route.fullPath" />
-		<h2 v-if="store.isWorking">Loading...</h2>
+		<RouterView v-if="!store.isWorking" :key="$route.fullPath" />
+		<Loading v-if="store.isWorking" />
 	</main>
 	<footer>
 		<p>
