@@ -296,7 +296,3 @@ export type Enums<
 	: PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
 		? PublicSchema["Enums"][PublicEnumNameOrOptions]
 	: never
-
-// Export shorthand for tables because conditional types doesn"t work in Vue
-export type DonationCenterSchema =
-	PublicSchema["Tables"]["donation_centers"]["Row"]
