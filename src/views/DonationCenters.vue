@@ -13,7 +13,7 @@ onMounted(async () => {
 		<h1>Nearby Donation Centers</h1>
 	</header>
 	<article>
-		<DonationCenter v-for="center in store.donationCenters" :key="center.id" :center />
+		<DonationCenter v-for="center in store.donationCenters" :key="center.center_id" :center />
 	</article>
 </template>
 

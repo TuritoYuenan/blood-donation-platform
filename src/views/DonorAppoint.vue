@@ -19,6 +19,7 @@ async function appoint() {
 
 onMounted(async () => {
 	if (store.donationCenters.length === 0) store.loadDonationCenters()
+	if (store.workingHours.size === 0) store.loadWorkingHours()
 })
 </script>
 
@@ -28,6 +29,24 @@ onMounted(async () => {
 	</header>
 
 	<form @submit.prevent="appoint">
+		<label for="location">
+			<RouterLink to="/donation-centers" target="_blank" rel="noreferrer noopener">
+				Donation Center
+			</RouterLink>
+		</label>
+		<select id="location" v-model="location" required>
+			<option disabled value="">Please select a donation center to appoint</option>
+			<option v-for="center in store.donationCenters" :value="center.center_id">{{ center.name }}</option>
+		</select>
+
+		<label for="date">Date to Appoint</label>
+		<select id="date" v-model="date" required>
+			<option disabled value="">Please select a day to appoint</option>
+			<option v-for="date in store.workingHours.get(location)" :value="date.hours_id">
+				{{ date.open_time }} - {{ date.close_time }}
+			</option>
+		</select>
+
 		<label for="full_name">Full name</label>
 		<input id="full_name" type="text" v-model.trim="fullName" required>
 
@@ -39,21 +58,6 @@ onMounted(async () => {
 
 		<label for="citizen">Citizen ID</label>
 		<input id="citizen" type="text" v-model.trim="citizenId">
-
-		<label for="location">
-			<RouterLink to="/donation-centers" target="_blank" rel="noreferrer noopener">
-				Donation Center
-			</RouterLink>
-		</label>
-		<select id="location" v-model="location" required>
-			<option disabled value="">Please select one</option>
-			<option v-for="center in store.donationCenters" :value="center.id">{{ center.name }}</option>
-		</select>
-
-		<label for="date">Appointment Date</label>
-		<select id="date" v-model="date" required>
-			<option disabled value="">Please select one</option>
-		</select>
 
 		<label for="gender">Gender</label>
 		<select id="gender" v-model="gender">
@@ -90,7 +94,7 @@ form label {
 	text-align: center;
 }
 
-input, select {
+:is(input, select) {
 	border: 1px solid black;
 }
 </style>

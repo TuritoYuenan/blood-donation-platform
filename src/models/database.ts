@@ -37,21 +37,21 @@ export type Database = {
 			donation_centers: {
 				Row: {
 					address: string
-					id: string
+					center_id: string
 					is_hospital: boolean
 					name: string
 					picture: string | null
 				}
 				Insert: {
 					address?: string
-					id?: string
+					center_id?: string
 					is_hospital: boolean
 					name: string
 					picture?: string | null
 				}
 				Update: {
 					address?: string
-					id?: string
+					center_id?: string
 					is_hospital?: boolean
 					name?: string
 					picture?: string | null
@@ -63,21 +63,21 @@ export type Database = {
 					center_id: string
 					date: string
 					donor_id: string
-					id: string
+					query_id: string
 					registered: string
 				}
 				Insert: {
 					center_id: string
 					date: string
 					donor_id: string
-					id: string
+					query_id?: string
 					registered?: string
 				}
 				Update: {
 					center_id?: string
 					date?: string
 					donor_id?: string
-					id?: string
+					query_id?: string
 					registered?: string
 				}
 				Relationships: [
@@ -86,14 +86,14 @@ export type Database = {
 						columns: ["center_id"]
 						isOneToOne: false
 						referencedRelation: "donation_centers"
-						referencedColumns: ["id"]
+						referencedColumns: ["center_id"]
 					},
 					{
 						foreignKeyName: "donation_queries_donor_id_fkey"
 						columns: ["donor_id"]
 						isOneToOne: false
 						referencedRelation: "donors"
-						referencedColumns: ["id"]
+						referencedColumns: ["donor_id"]
 					},
 				]
 			}
@@ -119,46 +119,37 @@ export type Database = {
 						columns: ["query_id"]
 						isOneToOne: true
 						referencedRelation: "donation_queries"
-						referencedColumns: ["id"]
+						referencedColumns: ["query_id"]
 					},
 				]
 			}
 			donors: {
 				Row: {
-					blood_type: Database["public"]["Enums"]["blood_type"]
 					citizen_id: string
 					created: string
+					donor_id: string
 					email_address: string
 					full_name: string
 					gender: Database["public"]["Enums"]["gender"]
-					height: number | null
-					id: string
 					phone_number: string | null
-					weight: number | null
 				}
 				Insert: {
-					blood_type: Database["public"]["Enums"]["blood_type"]
 					citizen_id: string
 					created?: string
+					donor_id?: string
 					email_address: string
 					full_name: string
 					gender: Database["public"]["Enums"]["gender"]
-					height?: number | null
-					id?: string
 					phone_number?: string | null
-					weight?: number | null
 				}
 				Update: {
-					blood_type?: Database["public"]["Enums"]["blood_type"]
 					citizen_id?: string
 					created?: string
+					donor_id?: string
 					email_address?: string
 					full_name?: string
 					gender?: Database["public"]["Enums"]["gender"]
-					height?: number | null
-					id?: string
 					phone_number?: string | null
-					weight?: number | null
 				}
 				Relationships: []
 			}
@@ -167,21 +158,21 @@ export type Database = {
 					center_id: string
 					close_time: string
 					day_of_week: number
-					id: string
+					hours_id: string
 					open_time: string
 				}
 				Insert: {
 					center_id: string
 					close_time: string
 					day_of_week?: number
-					id?: string
+					hours_id?: string
 					open_time: string
 				}
 				Update: {
 					center_id?: string
 					close_time?: string
 					day_of_week?: number
-					id?: string
+					hours_id?: string
 					open_time?: string
 				}
 				Relationships: [
@@ -190,7 +181,7 @@ export type Database = {
 						columns: ["center_id"]
 						isOneToOne: false
 						referencedRelation: "donation_centers"
-						referencedColumns: ["id"]
+						referencedColumns: ["center_id"]
 					},
 				]
 			}

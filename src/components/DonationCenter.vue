@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DonationCenterSchema } from "../models/database"
+import { DonationCenterSchema } from "../models/sugar"
 
 defineProps<{ center: DonationCenterSchema }>()
 </script>

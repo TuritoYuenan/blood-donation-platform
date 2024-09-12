@@ -22,7 +22,29 @@ export default reactive({
 			return
 		}
 
+		data.forEach((center) => this.workingHours.set(center.center_id, []))
 		this.donationCenters.splice(0, this.donationCenters.length, ...data!)
 		this.isWorking = false
-	}
+	},
+
+	/** List of each donation center's working hours */
+	workingHours: new Map<string, WorkingHoursSchema[]>(),
+
+	/** Fetch the working hours */
+	async loadWorkingHours() {
+		this.isWorking = true
+
+		const { data, error } = await supabase()
+			.from("working_hours")
+			.select("*")
+
+		if (error) {
+			if (error instanceof Error) alert('Error' + error.message)
+			return
+		}
+
+		data.forEach((range) => this.workingHours.get(range.center_id)!.push(range))
+		console.dir(this.workingHours);
+		this.isWorking = false
+	},
 })
