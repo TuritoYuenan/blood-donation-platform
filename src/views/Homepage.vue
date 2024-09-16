@@ -6,7 +6,7 @@ import Icon from "../components/MaterialIcon.vue";
 	<header>
 		<h1>Blood Management System</h1>
 	</header>
-	<section>
+	<article>
 		<RouterLink to="/donor/appoint">
 			<p>For Blood Donor</p>
 			<Icon id="volunteer_activism" />
@@ -17,31 +17,43 @@ import Icon from "../components/MaterialIcon.vue";
 			<Icon id="medical_information" />
 			<p>View Management Dashboard</p>
 		</RouterLink>
-	</section>
+	</article>
 </template>
 
 <style scoped>
-section {
+article {
 	max-width: 800px;
 	margin: auto;
 	padding: 1rem;
 	display: grid;
 	gap: 1rem;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: 1fr 1fr;
 }
 
-section a {
+article a {
 	padding: 1rem;
 	display: block;
 	color: inherit;
 	font-size: large;
 	text-align: center;
 	text-decoration: none;
-	border: 2px solid black;
 	border-radius: 1rem;
+	box-shadow: 0 0 4px black;
+	transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-section a span {
+article a:hover {
+	scale: 1.05;
+}
+
+article a span {
 	font-size: 8em;
+}
+
+@media (width <= 600px) {
+	article {
+		display: flex;
+		flex-direction: column;
+	}
 }
 </style>

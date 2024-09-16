@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import store from "../utils/store";
 
 const fullName = ref<string>("")
@@ -14,7 +14,8 @@ const weight = ref<number>(0)
 const height = ref<number>(0)
 
 async function appoint() {
-	alert("Submitted")
+	console.log("Submitted")
+	useRouter().push({ path: "/donor/result" })
 }
 
 onMounted(async () => {
@@ -85,13 +86,21 @@ form {
 	padding: 2rem;
 	display: grid;
 	gap: 0.5rem 1rem;
-	grid-template-columns: auto 3fr;
-	border: 2px solid black;
+	grid-template-columns: 25% 75%;
+	border-radius: 1rem;
+	box-shadow: 0 0 4px black;
 }
 
-form label {
-	margin-inline: 1rem;
-	text-align: center;
+@media (width <= 600px) {
+	form {
+		grid-template-columns: 100%;
+	}
+}
+
+@media (width <= 800px) {
+	form {
+		border-radius: 0;
+	}
 }
 
 :is(input, select) {
