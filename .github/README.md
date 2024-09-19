@@ -42,8 +42,9 @@ docker build . -t blood-management-system
 ## How to contribute
 
 1. Clone this repository
-2. Open your terminal in the repository directory
-3. Run the following
+2. Create a `.env.local` (dot ENV dot Local) file using the contents of `.env.example`
+3. Open your terminal in the repository directory
+4. Run the following
 
 ```sh
 # Install npm packages
