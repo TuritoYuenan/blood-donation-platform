@@ -47,4 +47,6 @@ export default reactive({
 		console.dir(this.workingHours);
 		this.isWorking = false
 	},
+
+	isLoggedIn: false,
 })

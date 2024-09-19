@@ -12,10 +12,10 @@ import Icon from "../components/MaterialIcon.vue";
 			<Icon id="volunteer_activism" />
 			<p>Appoint for Blood Donation</p>
 		</RouterLink>
-		<RouterLink to="/staff/dashboard">
+		<RouterLink to="/staff/home">
 			<p>For Medical Staff</p>
 			<Icon id="medical_information" />
-			<p>View Management Dashboard</p>
+			<p>Access Management Tools</p>
 		</RouterLink>
 	</article>
 </template>

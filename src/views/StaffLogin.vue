@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { onMounted, ref } from "vue"
 import supabase from "../utils/supabase"
 import account from "../assets/account.svg"
+import { useRouter } from "vue-router";
+import store from "../utils/store";
 
+const router = useRouter()
 const loading = ref<boolean>(false)
 const email = ref<string>("")
+
+async function handleLoginMock() {
+	store.isLoggedIn = true
+	router.push("/staff/home")
+}
 
 async function handleLogin() {
 	loading.value = true
@@ -23,10 +31,16 @@ async function handleLogin() {
 		loading.value = false
 	}
 }
+
+onMounted(() => {
+	if (store.isLoggedIn) {
+		router.push("/staff/home")
+	}
+})
 </script>
 
 <template>
-	<form @submit.prevent="handleLogin">
+	<form @submit.prevent="handleLoginMock">
 		<header><img v-bind:src="account" alt="Profile picture"></header>
 
 		<input type="email" placeholder="email" v-model="email" required>
