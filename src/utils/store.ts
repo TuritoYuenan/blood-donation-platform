@@ -23,6 +23,8 @@ export default reactive({
 		}
 
 		data.forEach((center) => this.workingHours.set(center.center_id, []))
+		await this.loadWorkingHours()
+
 		this.donationCenters.splice(0, this.donationCenters.length, ...data!)
 		this.isWorking = false
 	},
@@ -33,6 +35,7 @@ export default reactive({
 	/** Fetch the working hours */
 	async loadWorkingHours() {
 		this.isWorking = true
+		console.dir("Loading working hours");
 
 		const { data, error } = await supabase()
 			.from("working_hours")

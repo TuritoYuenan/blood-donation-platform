@@ -13,14 +13,15 @@ const date = ref<string>("")
 const weight = ref<number>(0)
 const height = ref<number>(0)
 
+const router = useRouter()
+
 async function appoint() {
 	console.log("Submitted")
-	useRouter().push({ path: "/donor/result" })
+	router.push({ path: "/donor/result" })
 }
 
 onMounted(async () => {
 	if (store.donationCenters.length === 0) store.loadDonationCenters()
-	if (store.workingHours.size === 0) store.loadWorkingHours()
 })
 </script>
 
@@ -29,7 +30,7 @@ onMounted(async () => {
 		<h1>Appoint for blood donation</h1>
 	</header>
 
-	<form @submit.prevent="appoint">
+	<form @submit.prevent="appoint" novalidate>
 		<label for="location">
 			<RouterLink to="/donation-centers" target="_blank" rel="noreferrer noopener">
 				Donation Center
