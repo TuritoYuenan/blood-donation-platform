@@ -9,3 +9,7 @@ export type DonationCenterSchema =
 /** Schema for working_hours table */
 export type WorkingHoursSchema =
 	Database["public"]["Tables"]["working_hours"]["Row"]
+
+//** Schema for donors table */
+export type DonorSchema =
+	Database["public"]["Tables"]["donors"]["Row"]

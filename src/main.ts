@@ -21,6 +21,7 @@ const router = createRouter({
 		// Pages for Medical staffs
 		{ path: "/staff/login", component: () => import("./views/StaffLogin.vue") },
 		{ path: "/staff/home", component: () => import("./views/StaffHome.vue") },
+		{ path: "/staff/managedonors", component: () => import("./views/StaffManageDonors.vue") }
 	],
 })
 

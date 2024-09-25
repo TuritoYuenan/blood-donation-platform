@@ -1,10 +1,27 @@
 import { reactive } from "vue";
-import { DonationCenterSchema, WorkingHoursSchema } from "../models/sugar";
+import { DonationCenterSchema, DonorSchema, WorkingHoursSchema } from "../models/sugar";
 import supabase from "./supabase";
 
 export default reactive({
 	/** Global state indicating whether there is a working task */
 	isWorking: false,
+
+	donors: [] as DonorSchema[],
+
+	async loadDonors() {
+		this.isWorking = true
+
+		const { data, error } = await supabase()
+			.from("donors")
+			.select("*")
+
+		if (error) {
+			if (error instanceof Error) alert('Error' + error.message)
+			return
+		}
+		this.donors.splice(0, this.donors.length, ...data!)
+		this.isWorking = false
+	},
 
 	/** List of donation centers */
 	donationCenters: [] as DonationCenterSchema[],
@@ -52,4 +69,5 @@ export default reactive({
 	},
 
 	isLoggedIn: false,
+
 })
