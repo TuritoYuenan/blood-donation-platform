@@ -1,0 +1,46 @@
+name: blood-platform
+
+services:
+  frontend:
+    build:
+      dockerfile: ./Dockerfile.frontend
+    container_name: frontend
+    restart: on-failure:5
+    ports:
+      - 8080:8080
+
+  backend:
+    build:
+      dockerfile: ./Dockerfile.backend
+    container_name: backend
+    restart: on-failure:5
+    ports:
+      - 8001:8080
+    # depends_on:
+    #   - database
+
+  database:
+    image: postgres:17-alpine
+    container_name: postgresql
+    restart: on-failure:5
+    shm_size: 128mb
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: http_member
+      POSTGRES_DB: blood_platform
+      POSTGRES_PASSWORD: blood_platform
+    volumes:
+      - ./.docker/postgres:/var/lib/postgresql/data
+
+  database-admin:
+    image: dpage/pgadmin4:8
+    container_name: pgadmin
+    restart: on-failure:5
+    ports:
+      - 5050:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: member@http.team
+      PGADMIN_DEFAULT_PASSWORD: blood_platform
+    volumes:
+      - ./.docker/pgadmin:/var/lib/pgadmin

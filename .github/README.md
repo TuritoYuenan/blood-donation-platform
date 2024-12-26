@@ -1,72 +1,37 @@
-# Blood Management System
-
-## How to deploy
-
-### Using docker
-
-1. Clone this repository
-2. Open your terminal in the repository directory
-
-Run the following
-
-```sh
-docker build . -t blood-management-system
-```
-
-### Using GitHub Pages
-
-1. Fork this repository
-2. Activate the GitHub Action workflow
-
-## What technologies are used
-
-- Computer languages
-	- HTML (markup)
-	- CSS (stylesheet)
-	- TypeScript (programming)
-	- JSON (data-transfer)
-	- YAML (config)
-	- TOML (config)
-- Tools
-	- Vite (webapp build)
-	- Node (webapp runtime)
-	- Docker (edge function & webapp build)
-	- Deno (edge function runtime)
-	- Supabase (backend)
-	- Vue TSC (type check)
-- Libraries/Frameworks
-	- Vue.js (framework)
-	- Vue Router (router)
-	- Supabase-js (client library)
+# Blood Donation Platform
 
 ## How to contribute
 
-1. Clone this repository
-2. Create a `.env.local` (dot ENV dot Local) file using the contents of `.env.example`
-3. Open your terminal in the repository directory
-4. Run the following
+1. Clone the repository
+2. Open repository in terminal or IDE of choice
+3. Install required tools to develop frontend or backend (shown in Tech stack)
+4. Run `docker compose watch` to preview while coding
 
-```sh
-# Install npm packages
-npm i
+## How to use
 
-# Run the webapp in developer mode
-npm run dev
+1. Clone the repository
+2. Open repository in terminal
+3. Run `docker compose up -d` to deploy locally
 
-# Build (CI/CD will mostly do this for you)
-npm run build
+## What technologies are used / Tech stack
 
-# View the built webapp
-npm run preview
-```
+- Frontend: Vue.js
+- Backend: ASP.NET
+- Database: PostgreSQL (with pgadmin)
+- Deployment: Docker Compose
 
-## Who is involved? / Credits
+## Who is involved / Credits
 
-- Mentor: **Mr. Minh Nguyen**, Lecturer @ Swinburne University, HCMC, Vietnam
+### Current members
+
+- Project Manager: **Nguyen Quoc Bao**, Student @ Swinburne University, HCMC, Vietnam
 - Technical Leader: **Nguyen Ta Minh Triet**, Student @ Swinburne University, HCMC, Vietnam
-- Frontend: **Nguyen Ngoc Anh**, Student @ Swinburne University, HCMC, Vietnam
-- Backend: **Nguyen Quoc Bao**, Student @ Swinburne University, HCMC, Vietnam
+- UI/UX Designer: **Nguyen Ngoc Anh**, Student @ Swinburne University, HCMC, Vietnam
+- Supervisor: **Huynh Nguyen Quoc Bao**, Alumni @ Swinburne University, HCMC, Vietnam
+
+### Former members
+
 - Database: **Luu Hieu Khang**, Student @ Swinburne University, HCMC, Vietnam
-- UI/UX: **Dang Quynh Chi**, Student @ Swinburne University, HCMC, Vietnam
-- Supervisor: **Huynh Nguyen Quoc Bao**, Student @ Swinburne University, HCMC, Vietnam
-- Supervisor: **Ms. Titan Vo** @ Swinburne University Academic Department, HCMC, Vietnam
+- UI/UX Researcher: **Dang Quynh Chi**, Student @ Swinburne University, HCMC, Vietnam
+- Mentor: **Dr. Minh Nguyen**, Former Lecturer @ Swinburne University, HCMC, Vietnam
+- Supervisor: **Ms. Titan Vo**, Former Industry Liaison @ Swinburne University, HCMC, Vietnam
