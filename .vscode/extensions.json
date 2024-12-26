@@ -1,6 +1,6 @@
 {
 	"recommendations": [
-		"denoland.vscode-deno",
-		"Vue.volar"
+		"vue.volar",
+		"ms-dotnettools.csdevkit"
 	]
 }
