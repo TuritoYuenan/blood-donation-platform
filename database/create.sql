@@ -1,0 +1,109 @@
+CREATE TABLE IF NOT EXISTS BloodTypes (
+	BloodType VARCHAR(50) NOT NULL PRIMARY KEY,
+	BloodTypeDesc TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Shifts (
+	ShiftID VARCHAR(50) NOT NULL PRIMARY KEY,
+	DateOfWeek NUMERIC NOT NULL,
+	StartTime TIME,
+	EndTime TIME
+);
+
+CREATE TABLE IF NOT EXISTS DonationCenters (
+	CenterID VARCHAR(50) NOT NULL PRIMARY KEY,
+	CenterName VARCHAR(50) NOT NULL,
+	Status NUMERIC(1) NOT NULL,
+	PhoneNumber VARCHAR(15),
+	Email VARCHAR(100),
+	OperatingHours VARCHAR[],
+	Description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Users (
+	UserID VARCHAR(50) NOT NULL PRIMARY KEY,
+	Password VARCHAR(50) NOT NULL,
+	FirstName VARCHAR(50) NOT NULL,
+	LastName VARCHAR(50) NOT NULL,
+	DateOfBirth DATE,
+	PhoneNumber VARCHAR(15),
+	Email VARCHAR(100),
+	Address VARCHAR(100),
+	UserType NUMERIC,
+	FaceImg BYTEA
+);
+
+CREATE TABLE IF NOT EXISTS Notifications (
+	NotificationID SERIAL PRIMARY KEY,
+	UserID VARCHAR(50) NOT NULL,
+	Message TEXT,
+	SentTime TIME NOT NULL,
+	SentDate DATE NOT NULL,
+	SentType NUMERIC NOT NULL,
+	Status NUMERIC NOT NULL,
+
+	FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+CREATE TABLE IF NOT EXISTS Staffs (
+	StaffID VARCHAR(50) NOT NULL PRIMARY KEY,
+	CenterID VARCHAR(50),
+	LastName VARCHAR(50),
+	DateOfBirth DATE,
+	PhoneNumber VARCHAR(15),
+	Email VARCHAR(100),
+	WorkingHours VARCHAR[],
+
+	FOREIGN KEY (StaffID) REFERENCES Users(UserID),
+	FOREIGN KEY (CenterID) REFERENCES DonationCenters(CenterID)
+	-- FOREIGN KEY (EACH ELEMENT OF WorkingHours) REFERENCES Shifts(ShiftID)
+);
+
+CREATE TABLE IF NOT EXISTS Donors (
+	DonorID VARCHAR(50) NOT NULL PRIMARY KEY,
+	Weight REAL,
+	Height REAL,
+	LastDonation VARCHAR,
+	BloodType VARCHAR(50),
+	HealthHistory JSON,
+
+	FOREIGN KEY (DonorID) REFERENCES Users(UserID),
+	FOREIGN KEY (BloodType) REFERENCES BloodTypes(BloodType)
+);
+
+CREATE TABLE IF NOT EXISTS Appointments (
+	AppointmentID VARCHAR(50) NOT NULL PRIMARY KEY,
+	Owner VARCHAR(50) NOT NULL,
+	AptDate DATE NOT NULL,
+	CenterID VARCHAR(50) NOT NULL,
+	LeadStaff VARCHAR(50),
+	Email VARCHAR(50),
+	PhoneNumber VARCHAR(15),
+	StaffList VARCHAR[],
+	AptType NUMERIC NOT NULL,
+	Status NUMERIC NOT NULL,
+	Note TEXT,
+
+	FOREIGN KEY (Owner) REFERENCES Users(UserID),
+	FOREIGN KEY (CenterID) REFERENCES DonationCenters(CenterID),
+	FOREIGN KEY (LeadStaff) REFERENCES Staffs(StaffID),
+	FOREIGN KEY (StaffList) REFERENCES Staffs(StaffID)
+);
+
+CREATE TABLE IF NOT EXISTS UserAppointments (
+	UserID VARCHAR(50) NOT NULL,
+	AppointmentID VARCHAR(50) NOT NULL,
+	AptDate DATE NOT NULL,
+	CenterID VARCHAR(50) NOT NULL,
+	OperatingStaff VARCHAR(50),
+	Status NUMERIC NOT NULL,
+	BloodType VARCHAR(50),
+	Amount REAL,
+	Note TEXT,
+
+	FOREIGN KEY (UserID) REFERENCES Users(UserID),
+	FOREIGN KEY (AppointmentID) REFERENCES Appointments(AppointmentID),
+	FOREIGN KEY (CenterID) REFERENCES DonationCenters(CenterID),
+	FOREIGN KEY (OperatingStaff) REFERENCES Staffs(StaffID),
+	FOREIGN KEY (BloodType) REFERENCES BloodTypes(BloodType)
+);
