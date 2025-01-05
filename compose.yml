@@ -2,17 +2,14 @@ name: blood-platform
 
 services:
   frontend:
-    build:
-      dockerfile: ./Dockerfile.frontend
+    build: ./frontend
     container_name: frontend
     restart: on-failure:5
     ports:
       - 8080:8080
 
   backend:
-    build:
-      dockerfile: ./Dockerfile.backend
-    container_name: backend
+    build: ./backend
     restart: on-failure:5
     ports:
       - 8001:8080
