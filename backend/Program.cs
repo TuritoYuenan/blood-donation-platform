@@ -7,9 +7,7 @@ internal class Program
 	{
 		BloodPlatformContext context = new();
 
-		WebApplicationBuilder builder = WebApplication.CreateSlimBuilder(args);
-
-		WebApplication app = builder.Build();
+		WebApplication app = WebApplication.Create(args);
 
 		app.MapGet("/bloodtypes", () => context.Bloodtypes.ToList());
 		app.MapGet("/users", () => context.Users.ToList());
