@@ -6,15 +6,17 @@ services:
     container_name: frontend
     restart: on-failure:5
     ports:
-      - 8080:8080
+      - 80:8080
+    depends_on:
+      - backend
 
   backend:
     build: ./backend
     restart: on-failure:5
     ports:
-      - 8001:8080
-    # depends_on:
-    #   - database
+      - 8080:8080
+    depends_on:
+      - database
 
   database:
     image: postgres:17-alpine
@@ -41,3 +43,5 @@ services:
       PGADMIN_DEFAULT_PASSWORD: blood_platform
     volumes:
       - ./.docker/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - database
