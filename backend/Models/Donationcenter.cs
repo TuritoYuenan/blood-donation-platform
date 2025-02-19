@@ -1,6 +1,6 @@
 ﻿namespace Backend;
 
-public partial class Donationcenter
+public partial class DonationCenter
 {
     public string Centerid { get; set; } = null!;
 
@@ -20,5 +20,5 @@ public partial class Donationcenter
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 
-    public virtual ICollection<Usersappointment> Usersappointments { get; set; } = new List<Usersappointment>();
+    public virtual ICollection<UsersAppointment> Usersappointments { get; set; } = new List<UsersAppointment>();
 }

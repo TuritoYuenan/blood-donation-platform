@@ -24,11 +24,11 @@ public partial class Appointment
 
     public string? Note { get; set; }
 
-    public virtual Donationcenter Center { get; set; } = null!;
+    public virtual DonationCenter Center { get; set; } = null!;
 
     public virtual Staff? LeadstaffNavigation { get; set; }
 
     public virtual User OwnerNavigation { get; set; } = null!;
 
-    public virtual ICollection<Usersappointment> Usersappointments { get; set; } = [];
+    public virtual ICollection<UsersAppointment> Usersappointments { get; set; } = [];
 }

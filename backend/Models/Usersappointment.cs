@@ -1,6 +1,6 @@
 ﻿namespace Backend;
 
-public partial class Usersappointment
+public partial class UsersAppointment
 {
     public string Userid { get; set; } = null!;
 
@@ -24,7 +24,7 @@ public partial class Usersappointment
 
     public virtual Bloodtype? BloodtypeNavigation { get; set; }
 
-    public virtual Donationcenter Center { get; set; } = null!;
+    public virtual DonationCenter Center { get; set; } = null!;
 
     public virtual Staff? OperatingstaffNavigation { get; set; }
 

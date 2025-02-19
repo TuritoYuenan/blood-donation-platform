@@ -12,7 +12,7 @@ public partial class BloodPlatformContext : DbContext
 
 	public virtual DbSet<Bloodtype> Bloodtypes { get; set; }
 
-	public virtual DbSet<Donationcenter> Donationcenters { get; set; }
+	public virtual DbSet<DonationCenter> Donationcenters { get; set; }
 
 	public virtual DbSet<Donor> Donors { get; set; }
 
@@ -24,7 +24,7 @@ public partial class BloodPlatformContext : DbContext
 
 	public virtual DbSet<User> Users { get; set; }
 
-	public virtual DbSet<Usersappointment> Usersappointments { get; set; }
+	public virtual DbSet<UsersAppointment> Usersappointments { get; set; }
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
@@ -92,7 +92,7 @@ public partial class BloodPlatformContext : DbContext
 			entity.Property(e => e.Bloodtypedesc).HasColumnName("bloodtypedesc");
 		});
 
-		modelBuilder.Entity<Donationcenter>(entity =>
+		modelBuilder.Entity<DonationCenter>(entity =>
 		{
 			entity.HasKey(e => e.Centerid).HasName("donationcenters_pkey");
 
@@ -254,7 +254,7 @@ public partial class BloodPlatformContext : DbContext
 			entity.Property(e => e.Usertype).HasColumnName("usertype");
 		});
 
-		modelBuilder.Entity<Usersappointment>(entity =>
+		modelBuilder.Entity<UsersAppointment>(entity =>
 		{
 			entity.HasKey(e => new { e.Userid, e.Appointmentid }).HasName("usersappointments_pkey");
 

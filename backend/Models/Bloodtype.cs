@@ -8,5 +8,5 @@ public partial class Bloodtype
 
     public virtual ICollection<Donor> Donors { get; set; } = new List<Donor>();
 
-    public virtual ICollection<Usersappointment> Usersappointments { get; set; } = new List<Usersappointment>();
+    public virtual ICollection<UsersAppointment> Usersappointments { get; set; } = new List<UsersAppointment>();
 }

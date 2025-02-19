@@ -30,5 +30,5 @@ public partial class User
 
     public virtual Staff? Staff { get; set; }
 
-    public virtual ICollection<Usersappointment> Usersappointments { get; set; } = new List<Usersappointment>();
+    public virtual ICollection<UsersAppointment> Usersappointments { get; set; } = new List<UsersAppointment>();
 }

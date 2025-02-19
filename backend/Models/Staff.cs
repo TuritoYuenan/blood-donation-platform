@@ -18,9 +18,9 @@ public partial class Staff
 
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
-    public virtual Donationcenter? Center { get; set; }
+    public virtual DonationCenter? Center { get; set; }
 
     public virtual User StaffNavigation { get; set; } = null!;
 
-    public virtual ICollection<Usersappointment> Usersappointments { get; set; } = new List<Usersappointment>();
+    public virtual ICollection<UsersAppointment> Usersappointments { get; set; } = new List<UsersAppointment>();
 }
