@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Backend.Models;
+
 namespace Backend.Helpers;
 
 public partial class BloodPlatformContext : DbContext

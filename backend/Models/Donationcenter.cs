@@ -1,4 +1,4 @@
-﻿namespace Backend;
+﻿namespace Backend.Models;
 
 public partial class DonationCenter
 {
