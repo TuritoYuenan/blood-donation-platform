@@ -34,20 +34,26 @@ const router = createRouter({
 			component: () => import('../views/ProfileView.vue'),
 		},
 
-		// Donation pages
+		// Location pages
 		{
-			path: '/donation/centers',
-			component: () => import('../views/DCentersView.vue'),
-		},
-		{
-			path: '/donation/campaigns',
-			component: () => import('../views/DCampaignsView.vue'),
+			path: '/locations',
+			component: () => import('../views/LocationsView.vue'),
+			children: [
+				{
+					path: 'centers',
+					component: () => import('../views/CentersView.vue'),
+				},
+				{
+					path: 'campaigns',
+					component: () => import('../views/CampaignsView.vue'),
+				},
+			]
 		},
 
-		// Login & Signup
+		// Sign in & Sign up pages
 		{
-			path: '/login',
-			component: () => import('../views/LoginView.vue'),
+			path: '/signin',
+			component: () => import('../views/SigninView.vue'),
 		},
 		{
 			path: '/signup',

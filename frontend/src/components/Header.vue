@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	const navItems = [
-		{ name: 'Locations', link: '/location/centers' },
+		{ name: 'Locations', link: '/locations/centers' },
 		{ name: 'Link', link: '/' },
 		{ name: 'Sign in', link: '/signin' }
 	];
