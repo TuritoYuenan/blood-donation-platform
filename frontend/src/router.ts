@@ -13,39 +13,39 @@ const router = createRouter({
 		// Info pages
 		{
 			path: '/about',
-			component: () => import('../views/AboutView.vue'),
+			component: () => import('./views/AboutView.vue'),
 		},
 		{
 			path: '/contact-us',
-			component: () => import('../views/ContactView.vue'),
+			component: () => import('./views/ContactView.vue'),
 		},
 
 		// Personal pages
 		{
 			path: '/settings',
-			component: () => import('../views/SettingsView.vue'),
+			component: () => import('./views/SettingsView.vue'),
 		},
 		{
 			path: '/history',
-			component: () => import('../views/HistoryView.vue'),
+			component: () => import('./views/HistoryView.vue'),
 		},
 		{
 			path: '/profile',
-			component: () => import('../views/ProfileView.vue'),
+			component: () => import('./views/ProfileView.vue'),
 		},
 
 		// Location pages
 		{
 			path: '/locations',
-			component: () => import('../views/LocationsView.vue'),
+			component: () => import('./views/LocationsView.vue'),
 			children: [
 				{
 					path: 'centers',
-					component: () => import('../views/CentersView.vue'),
+					component: () => import('./views/CentersView.vue'),
 				},
 				{
 					path: 'campaigns',
-					component: () => import('../views/CampaignsView.vue'),
+					component: () => import('./views/CampaignsView.vue'),
 				},
 			]
 		},
@@ -53,21 +53,21 @@ const router = createRouter({
 		// Sign in & Sign up pages
 		{
 			path: '/signin',
-			component: () => import('../views/SigninView.vue'),
+			component: () => import('./views/SigninView.vue'),
 		},
 		{
 			path: '/signup',
-			component: () => import('../views/SignupView.vue'),
+			component: () => import('./views/SignupView.vue'),
 		},
 
 		// Footer pages
 		{
 			path: '/terms',
-			component: () => import('../views/TermsView.vue'),
+			component: () => import('./views/TermsView.vue'),
 		},
 		{
 			path: '/privacy',
-			component: () => import('../views/PrivacyView.vue'),
+			component: () => import('./views/PrivacyView.vue'),
 		},
 	],
 })
