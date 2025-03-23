@@ -5,10 +5,10 @@ import Footer from "./components/Footer.vue"
 </script>
 
 <template>
-	<section class="sticky-top p-3">
+	<section class="p-3 sticky-top">
 		<Header />
 	</section>
-	<main class="px-5 py-4">
+	<main class="p-3">
 		<RouterView />
 	</main>
 	<section class="p-3">
