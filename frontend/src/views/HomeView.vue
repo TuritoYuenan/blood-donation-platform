@@ -1,4 +1,6 @@
-<script setup lang="ts">
+<script lang="ts">
+export default {
+};
 </script>
 
 <template>
@@ -7,7 +9,7 @@
 			<div class="col">
 				<h1>Cho đi để nhận lại</h1>
 				<p>Connect donors to recipients and streamline the blood donation process with a purpose-driven app.</p>
-				<a href="" class="px-3 py-2 d-inline-block bg-danger text-bg-danger rounded">Donate now!</a>
+				<RouterLink to="/locations/campaigns" class="px-3 py-2 d-inline-block bg-danger text-bg-danger rounded">Donate now!</RouterLink>
 			</div>
 			<div class="col">
 				<img src="" alt="">

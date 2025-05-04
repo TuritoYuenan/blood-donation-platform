@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script lang="ts">
+export default {
+	methods: {
+		isActive(path: string) {
+			return this.$route.path === path;
+		},
+	}
+};
+</script>
 
 <template>
 	<section class="container p-3">
@@ -7,8 +15,10 @@
 	</section>
 
 	<nav class="container p-3 nav nav-pills nav-fill">
-		<RouterLink to="/locations/centers" class="nav-link active" aria-current="page">Centers</RouterLink>
-		<RouterLink to="/locations/campaigns" class="nav-link">Campaigns</RouterLink>
+		<RouterLink class="nav-link" :class="{ active: isActive('/locations/centers') }" to="/locations/centers"
+			replace>Centers</RouterLink>
+		<RouterLink class="nav-link" :class="{ active: isActive('/locations/campaigns') }" to="/locations/campaigns"
+			replace>Campaigns</RouterLink>
 	</nav>
 
 	<section class="container p-3">

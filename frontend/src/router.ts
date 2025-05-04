@@ -60,6 +60,13 @@ const router = createRouter({
 			component: () => import('./views/SignupView.vue'),
 		},
 
+		// Booking
+		{
+			path: '/book',
+			component: () => import('./views/BookView.vue'),
+			props: route => ({ centerId: route.query.centerid }),
+		},
+
 		// Footer pages
 		{
 			path: '/terms',

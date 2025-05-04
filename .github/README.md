@@ -1,4 +1,17 @@
+![Project Banner](./Banner.png)
+
 # Blood Donation Platform
+
+## Project Idea
+
+We create a platform that
+
+## Project Implementation
+
+- Frontend: Vue.js
+- Backend: ASP.NET
+- Database: PostgreSQL (with pgadmin)
+- Deployment: Docker Compose
 
 ## How to contribute
 
@@ -13,14 +26,7 @@
 2. Open repository in terminal
 3. Run `docker compose up -d` to deploy locally
 
-## What technologies are used / Tech stack
-
-- Frontend: Vue.js
-- Backend: ASP.NET
-- Database: PostgreSQL (with pgadmin)
-- Deployment: Docker Compose
-
-## Who is involved / Credits
+## Stakeholders
 
 ### Current members
 
