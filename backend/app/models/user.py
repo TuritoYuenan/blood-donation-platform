@@ -1,6 +1,9 @@
 from sqlmodel import Field, SQLModel
 
 
+# MARK: Generic User
+
+
 class UserBase(SQLModel):
 	__tablename__ = "users"
 	email: str
@@ -21,6 +24,22 @@ class UserRead(UserBase):
 	id: int
 
 
+class UserUpdate(UserBase):
+	password: str | None = None
+
+
 class User(UserBase, table=True):
 	id: int | None = Field(default=None, primary_key=True)
 	password_hash: str
+
+
+# MARK: Staff User
+
+
+class StaffUserBase(SQLModel):
+	id: int = Field(primary_key=True, foreign_key="users.id")
+	centre_id: int | None = Field(default=None, foreign_key="donation_centres.id")
+
+
+# MARK: Donor User
+

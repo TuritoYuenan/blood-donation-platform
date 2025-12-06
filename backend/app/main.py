@@ -12,6 +12,29 @@ from app.routers import (
 	users
 )
 
+openapi_tags = [
+	{
+		"name": "Authentication",
+		"description": "Operations related to user authentication."
+	},
+	{
+		"name": "Users",
+		"description": "Operations related to user management."
+	},
+	{
+		"name": "Donation Centres",
+		"description": "Operations related to donation centres."
+	},
+	{
+		"name": "Donation Campaigns",
+		"description": "Operations related to donation campaigns."
+	},
+	{
+		"name": "Appointments",
+		"description": "Operations related to blood donation appointments."
+	}
+]
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
 	init_db()
@@ -23,6 +46,12 @@ app = FastAPI(
 	title="Blood Donation Platform API",
 	version="1.0.0",
 	description="API for managing users and blood donations.",
+	contact={
+		"name": "Turito Yuenan",
+		"email": "turitoyuenan@proton.me",
+		"url": "https://turitoyuenan.github.io/"
+	},
+	openapi_tags=openapi_tags,
 	lifespan=lifespan
 )
 
