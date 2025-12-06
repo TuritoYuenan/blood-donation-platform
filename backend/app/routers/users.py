@@ -6,13 +6,14 @@ from app.models.user import UserCreate, UserRead
 from app.services.user_service import UserService
 
 
-router = APIRouter(prefix="/users", tags=["users"])
+router = APIRouter(prefix="/users", tags=["Users"])
 
 
 @router.post(
 	"/",
 	summary="Create a new user",
 	response_model=UserRead,
+	status_code=201,
 )
 async def create_user(user: UserCreate, db: Session = Depends(get_db)):
 	return UserService.create_user(db, user)
