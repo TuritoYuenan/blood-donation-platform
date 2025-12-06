@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.concurrency import asynccontextmanager
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
 from app.db.database import init_db
@@ -11,11 +12,21 @@ async def lifespan(app: FastAPI):
 	yield
 	print("Shutting down...")
 
+
 app = FastAPI(
 	title="Blood Donation Platform API",
 	version="1.0.0",
 	description="API for managing users and blood donations.",
 	lifespan=lifespan
+)
+
+
+app.add_middleware(
+	CORSMiddleware,
+	allow_origins=["*"],
+	allow_credentials=True,
+	allow_methods=["*"],
+	allow_headers=["*"],
 )
 
 
