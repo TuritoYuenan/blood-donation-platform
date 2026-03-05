@@ -6,7 +6,9 @@ services:
     container_name: frontend
     restart: on-failure:5
     ports:
-      - 8080:8080
+      - 80:80
+    environment:
+      VITE_BACKEND_URL: http://backend:8000
     depends_on:
       - backend
 
