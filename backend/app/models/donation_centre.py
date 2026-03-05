@@ -16,6 +16,16 @@ class DonationCentreCreate(DonationCentreBase):
 	pass
 
 
+class DonationCentreUpdate(SQLModel):
+	name: str | None = None
+	address: str | None = None
+	status: str | None = None
+	phone_number: str | None = None
+	email: str | None = None
+	operating_hours: str | None = None
+	description: str | None = None
+
+
 class DonationCentreRead(DonationCentreBase):
 	id: int
 

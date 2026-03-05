@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
 from app.dependencies import get_db
-from app.models.donation_centre import DonationCentre, DonationCentreCreate, DonationCentreRead
+from app.models.donation_centre import DonationCentre, DonationCentreCreate, DonationCentreRead, DonationCentreUpdate
 
 
 router = APIRouter(prefix="/donation_centres", tags=["Donation Centres"])
@@ -27,3 +27,30 @@ async def create_donation_centre(centre: DonationCentreCreate, db: Session = Dep
 	db.commit()
 	db.refresh(db_centre)
 	return db_centre
+
+
+@router.put("/{centre_id}", response_model=DonationCentreRead)
+async def update_donation_centre(centre_id: int, centre: DonationCentreUpdate, db: Session = Depends(get_db)):
+	db_centre = db.get(DonationCentre, centre_id)
+	if not db_centre:
+		raise HTTPException(status_code=404, detail="Donation centre not found")
+
+	centre_data = centre.model_dump(exclude_unset=True)
+	for key, value in centre_data.items():
+		setattr(db_centre, key, value)
+
+	db.add(db_centre)
+	db.commit()
+	db.refresh(db_centre)
+	return db_centre
+
+
+@router.delete("/{centre_id}")
+async def delete_donation_centre(centre_id: int, db: Session = Depends(get_db)):
+	db_centre = db.get(DonationCentre, centre_id)
+	if not db_centre:
+		raise HTTPException(status_code=404, detail="Donation centre not found")
+
+	db.delete(db_centre)
+	db.commit()
+	return {"message": "Donation centre deleted successfully"}
