@@ -1,6 +1,18 @@
 name: blood-platform
 
 services:
+  analytics:
+    build: ./analytics
+    container_name: analytics
+    restart: on-failure:5
+    environment:
+      CRON_PATTERN: "2 6 * * *"
+      DATABASE_URL: postgres://minhtriet:blood_platform@database:5432/blood_platform?sslmode=disable
+    volumes:
+      - ./.docker/analytics/reports:/app/reports
+    depends_on:
+      - database
+
   frontend:
     build: ./frontend
     container_name: frontend
