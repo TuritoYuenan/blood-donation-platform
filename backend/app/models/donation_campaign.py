@@ -3,6 +3,7 @@ from sqlmodel import Field, SQLModel
 
 
 class DonationCampaignBase(SQLModel):
+	__tablename__ = "donation_campaigns"
 	name: str
 	description: str | None = None
 	start_date: date
