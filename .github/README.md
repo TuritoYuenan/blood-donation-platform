@@ -4,7 +4,7 @@
 
 ## Project Idea
 
-We create a platform that
+We create a platform that enables convenient management of, and booking for, blood donation processes. The platform serves blood donation organisers by streamlining processes and data flows, while also serving donors by providing a convenient and reliable place to find donation events to participate and contribute to.
 
 ## Project Implementation
 
